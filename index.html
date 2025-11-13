@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MyChainID</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- TweetNaCl for Ed25519 keys & signatures -->
+  <script src="https://unpkg.com/tweetnacl@1.0.3/nacl.min.js"></script>
+
+  <!-- bs58 to encode public key (for readable DID) -->
+  <script src="https://unpkg.com/bs58@4.0.2/dist/bs58.min.js"></script>
+
+  <!-- ethers.js for MetaMask + blockchain interactions -->
+  <script src="https://cdn.jsdelivr.net/npm/ethers/dist/ethers.min.js"></script>
+
+  <!-- Your custom JS file -->
+  <script defer src="script.js"></script>
+</head>
+
+<body class="bg-gradient-to-b from-[#0a0a0f] to-[#111] text-white font-sans">
+
+  <!-- Header -->
+  <header class="flex justify-between items-center px-8 py-4 bg-[#111217] shadow-md">
+    <h1 class="text-2xl font-bold text-cyan-400">MyChainID</h1>
+    <nav class="space-x-6">
+      <a href="#home" class="hover:text-cyan-400">Home</a>
+      <a href="#did" class="hover:text-cyan-400">DID</a>
+      <a href="#upload" class="hover:text-cyan-400">Upload</a>
+      <a href="#blockchain" class="hover:text-cyan-400">Blockchain</a>
+      <a href="#about" class="hover:text-cyan-400">About</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="text-center py-24 px-6">
+    <h1 class="text-5xl md:text-6xl font-bold bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
+      Own Your Identity. Securely. Privately. Forever.
+    </h1>
+    <p class="mt-6 text-lg text-gray-300 max-w-2xl mx-auto">
+      MyChainID is a decentralized digital identity vault that gives users full control over their credentials using blockchain principles.
+    </p>
+    <button onclick="scrollToSection('did')"
+      class="mt-8 px-6 py-3 bg-purple-600 hover:bg-purple-700 rounded-xl font-semibold shadow-lg">
+      Get Started
+    </button>
+  </section>
+
+  <!-- DID Generator Section -->
+  <section id="did" class="p-8 text-center bg-[#111217]">
+    <h2 class="text-3xl font-bold mb-6">Create Your Decentralized ID</h2>
+    <p class="text-gray-400 mb-4">Generate a unique blockchain-style DID (Demo Version)</p>
+    <button id="genDidBtn"
+      class="px-6 py-3 bg-cyan-600 rounded-xl font-semibold hover:bg-cyan-700">
+      Generate DID
+    </button>
+    <div id="didResult" class="mt-6 text-gray-300 text-sm"></div>
+  </section>
+
+  <!-- Upload Section -->
+  <section id="upload" class="p-8 text-center">
+    <h2 class="text-3xl font-bold mb-6">Upload Credential (Demo)</h2>
+    <p class="text-gray-400 mb-4">
+      Simulated decentralized file storage (mock IPFS)
+    </p>
+
+    <input
+      type="file"
+      id="fileInput"
+      class="block mx-auto mb-4 text-sm text-gray-300 border border-gray-700 p-2 rounded-md w-80"
+    />
+
+    <button
+      id="uploadBtn"
+      class="px-6 py-3 bg-purple-600 rounded-xl font-semibold hover:bg-purple-700"
+    >
+      Upload
+    </button>
+
+    <div id="uploadResult" class="mt-6 text-gray-300 text-sm"></div>
+  </section>
+
+  <!-- Blockchain Section -->
+  <section id="blockchain" class="p-8 text-center bg-[#111217]">
+    <h2 class="text-3xl font-bold mb-6">Blockchain Anchoring</h2>
+    <p class="text-gray-400 mb-4">
+      Connect your MetaMask wallet and anchor your DID or uploaded file on blockchain.
+    </p>
+    <button
+      id="connectMetaMaskBtn"
+      class="px-6 py-3 bg-orange-500 rounded-xl font-semibold hover:bg-orange-600"
+    >
+      Connect MetaMask
+    </button>
+    <div id="walletResult" class="mt-6 text-gray-300 text-sm"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 text-center text-gray-400 text-sm">
+    © 2025 MyChainID | Built for Hackathon Presentation
+  </footer>
+</body>
+</html>
